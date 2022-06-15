@@ -7,8 +7,20 @@
 {% block content %}
     <form action="" method="post">
     {% csrf_token %}
-     <h1>آیا از حذف کتاب {{ book.title }} مطمئن هستید ؟</h1>
-    <input type="submit" value="بله مطمئنم">
+            <div class="card my-5 shadow text-center">
+                    <h5 class="card-header bg-success text-light" >حذف کتاب {{ book.title }}</h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <br><br>
+                            <h1 class="text-muted">آیا از حذف کتاب {{ book.title }} مطمئن هستید ؟</h1>
+                        <br><br>
+                            <input class="btn btn-danger" type="submit" value="بله مطمئنم">
+                        <a class="btn btn-primary" href="{{ book.get_absolute_url }}">خیر</a>
+
+                        </p>
+                    </div>
+                </div>
+
 
     </form>
 {% endblock %}
