@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    {% block style %} {% endblock %}
+
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
@@ -33,7 +35,14 @@
                 <a class="nav-link" href="{% url 'book_create' %}">اضافه کردن کتاب</a>
             </div>
         </div>
-        <div class="mx-2 text-white">خوش آمدی محمدهادی | <a class="link-light text-decoration-none" href="#">خروج</a></div>
+        {% if user.is_authenticated %}
+            <div class="mx-2 text-white">خوش آمدی {{ user.username }} | <a class="mx-2 link-light text-decoration-none" href="{% url 'logout' %}">خروج</a></div>
+        {% else %}
+            <a class="mx-2 link-light text-decoration-none" href="{% url 'login' %}">ورود</a>
+            <span class="mx-1 link-light">یا</span>
+            <a class="mx-2 link-light text-decoration-none" href="{% url 'signup' %}">ثبت نام</a>
+
+        {% endif %}
     </div>
 </nav>
 
