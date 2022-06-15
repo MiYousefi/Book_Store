@@ -11,12 +11,16 @@
                 <div class="card m-2" style="max-width: 45%">
                     <div class="row g-0 h-100" dir="rtl">
                         <div class="col-md-4">
-                            <a href="{{ book.get_absolute_url }}"><img src="{{ book.cover.url }}" class="img-fluid rounded-start" alt="..."></a>
+                            {% if book.cover %}
+                                <a href="{{ book.get_absolute_url }}"><img src="{{ book.cover.url }}"
+                                                                           class="img-fluid rounded-start"
+                                                                           alt="..."></a>
+                            {% endif %}
                         </div>
                         <div class="col-md-8 h-100">
                             <div class="d-flex flex-column justify-content-between h-100">
                                 <div class="card-body">
-                                    <h3 class="card-title"><strong>{{ book.title}}</strong></h3>
+                                    <h3 class="card-title"><strong>{{ book.title }}</strong></h3>
                                     <p class="card-text pt-3">{{ book.description|truncatewords:57 }}</p>
                                     <p class="text-muted">نویسنده : {{ book.author }}</p>
                                 </div>
