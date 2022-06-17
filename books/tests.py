@@ -92,11 +92,13 @@ class BookTest(TestCase):
             'author': 'author updated',
             'description': 'description2 updated',
             'price': 17.00,
+            'cover': self.image,
         })
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Book.objects.last().title, 'book updated')
         self.assertEqual(Book.objects.last().author, 'author updated')
         self.assertEqual(Book.objects.last().price, 17.00)
+        self.assertEqual(Book.objects.last().cover, self.image)
 
     def test_delete_view(self):
         response = self.client.post(reverse('book_delete', args=[self.book.id]))
