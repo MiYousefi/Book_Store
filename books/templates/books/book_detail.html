@@ -21,6 +21,7 @@
                         </div>
 
                         <div class="col-xs-12 col-md-6 text-center text-md-end mt-md-1 mt-4">
+                            <h5 class="small my-1"><span class="text-muted">ارسال شده توسط: </span>{{ book.user }}</h5>
                             <h1>{{ book.title }}</h1>
                             <br>
                             <h5 class="small my-1"><span class="text-muted">نویسنده: </span>{{ book.author }}</h5>
@@ -51,6 +52,11 @@
                                 <div class="border-bottom mb-3">
                                     <h5 class="mb-3">{{ comment.user.username }}</h5>
                                     <p>{{ comment.text|linebreaks }}</p>
+                                    {% if comment.recommend %}
+                                        <p class="text-success">این کتاب را توصیه میکنم.</p>
+                                    {% else %}
+                                        <p class="text-danger">این کتاب را توصیه نمیکنم.</p>
+                                    {% endif %}
 
                                 </div>
                             {% endif %}
@@ -63,8 +69,9 @@
                     <div class="card shadow my-3 p-5 w-sm-75 w-100">
                         <h3>نظر خود را وارد کنید:</h3>
                         <form method="POST">
-                             {% csrf_token %}
+                            {% csrf_token %}
                             {{ comment_form|crispy }}
+                            <br>
                             <button type="submit" class="btn btn-primary">ارسال</button>
                         </form>
                     </div>
