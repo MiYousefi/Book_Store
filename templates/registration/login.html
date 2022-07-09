@@ -15,22 +15,18 @@
             <form method="post">
                 {% csrf_token %}
                 <br>
-                <h1 class="text-center">ورود</h1>
+                <h4 class="text-center text-muted">ورود به حساب کاربری</h4>
                 <br>
                 {{ form|crispy }}
                 <div class="form-group">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="mt-2">
-                            <a class="text-decoration-none" href="{% url 'password_reset' %}">فراموشی رمز عبور</a>
-                        </div>
-                    </div>
                     <button type="submit" class="btn btn-success mt-4 w-100" >ورود</button>
                     <div class="line-with-middle-sep">
-                  <span>
-                    یا
-                  </span>
+
                     </div>
-                    <a href="{% url 'signup' %}" class="btn btn-primary mt-2 mb-3 w-100">ثبت نام</a>
+
+                    <p class="text-muted">حساب کاربری ندارید؟ <a class="text-decoration-none text-success" href="{% url 'signup' %}">ثبت نام کنید.</a></p>
+                    <p class="text-muted">رمز عبور خود را فراموش کردید؟ <a class="text-decoration-none text-success" href="{% url 'password_reset' %}">اینجا کلیک کنید.</a></p>
+                </div>
             </form>
         </div>
 
